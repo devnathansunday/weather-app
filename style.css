@@ -42,18 +42,19 @@ div.notification-box .box {
     width: fit-content;
     max-width: 275px;
     height: auto;
-    padding: 25px;
+    padding: 15px;
     background-color: #ddd;
     border-radius: 10px;
 }
 
 div.notification-box p {
-    color: #000;
+    color: #222;
     padding: 10px 0;
+    font-size: 14px;
 }
 
 div.notification-box button {
-    float: right;
+    width: 100%;
     padding: 8px 10px;
     margin: 5px 0;
     background-color: #006eff;
