@@ -132,7 +132,7 @@ function getWeather(lat, lon) {
       notBox.style.display = 'none';
       return true; 
     } else {
-      notBox.style.display = 'block';
+      notBox.style.display = "flex";
       return false; 
     }
   }
