@@ -13,6 +13,8 @@ const openSearchBtn = $('openSearchBtn');
 const closeSearchBtn = $('closeSearchBtn');
 const loader = $('load-screen');
 const errorMessage = $('errorMessage');
+const startBtn = $('start-button');
+const notBox = $('notBox');
 
 function toggleSearchInput() {
   if (getComputedStyle(city).visibility === 'hidden') {
@@ -79,7 +81,7 @@ function getWeather(lat, lon) {
   `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}` : 
   `https://api.openweathermap.org/data/2.5/forecast?q=${document.getElementById('city').value.trim()}&appid=${apiKey}`;
   
-  const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  // const currentWeatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   
   Promise.all([fetch(url), fetch(forecastUrl)])
   .then(([currentWeatherResponse, forecastResponse]) => {
@@ -124,12 +126,35 @@ function getWeather(lat, lon) {
       console.error("Error getting user's location:", error);
     });
   }
+
+  function checkLocationAccess() {
+    if (localStorage.getItem('locationAllowed') === 'true') {
+      notBox.style.display = 'none';
+      return true; 
+    } else {
+      notBox.style.display = 'block';
+      return false; 
+    }
+  }
   
-  document.addEventListener("DOMContentLoaded", function() {
-    showLoader();
-    requestAnimationFrame(getDefaultWeather);
-  });
+  function runApp() {
+    if (checkLocationAccess()) {
+      document.addEventListener('DOMContentLoaded', function() {
+        showLoader();
+        requestAnimationFrame(getDefaultWeather);
+      });
+    } else {
+      startBtn.addEventListener('click', function() {
+        notBox.style.display = 'none';
+        localStorage.setItem('locationAllowed', 'true');
+        showLoader();
+        requestAnimationFrame(getDefaultWeather);
+      });
+    }
+  }
   
+  runApp(); 
+
   function displayWeather(data) {
     if (data.cod === "404") {
         weatherInfo.innerHTML = `<p>${data.message}</p>`;

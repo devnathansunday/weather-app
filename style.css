@@ -27,6 +27,41 @@ html, body {
     display: none;
 }
 
+div.notification-box {
+    background-color: #222;
+    position: fixed;
+    inset: 0;
+    box-shadow: 0px 4px 10px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+div.notification-box .box {
+    width: fit-content;
+    max-width: 275px;
+    height: auto;
+    padding: 25px;
+    background-color: #ddd;
+    border-radius: 10px;
+}
+
+div.notification-box p {
+    color: #000;
+    padding: 10px 0;
+}
+
+div.notification-box button {
+    float: right;
+    padding: 8px 10px;
+    margin: 5px 0;
+    background-color: #006eff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
 #load-screen {
     display: none;
     position: fixed;
@@ -34,7 +69,7 @@ html, body {
     justify-content: center;
     align-items: center;
     background-color: #222222fe;
-    z-index: 100;
+    z-index: 90;
 }
 
 #loader {
@@ -76,9 +111,9 @@ html, body {
 main {
     position: relative;
     margin: 0 auto;
-    padding: 60px 30px 40px;
+    padding: 60px 30px;
     width: 100%;
-    max-width: 1000px;
+    max-width: 800px;
     overflow: auto;
 }
 
