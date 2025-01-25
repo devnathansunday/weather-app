@@ -1,50 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weather</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div class="notification-box" id="notBox">
-    <div class="box">
-      <p>Please turn on your location before continuing</p>
-      <button id="start-button">ok</button>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="load-screen">
+      <div id="loader"></div>
     </div>
-  </div>
 
-  <div id="load-screen">
-    <div id="loader"></div>
-  </div>
-  
-  <main>
-    <div class="top">
-      <div class="city-name-date">
-        <div id="city-name"></div>
-        <div id="current-city-date"></div>
-        
-        <form id="weather-form">
-          <input type="text" placeholder="Enter City" id="city">
-          <i id="openSearchBtn" class="fa fa-magnifying-glass" aria-hidden="true" onclick="toggleSearchInput()"></i>
-          <i id="closeSearchBtn" class="fa-solid fa-xmark" onclick="toggleSearchInput()"></i>
-        </form>
+    <main>
+      <h2 id="name">Oops...</h2>
+
+      <div class="home">
+        <div id="city-name-date">
+          <div id="city-name"></div>
+          <div id="current-city-date"></div>
+        </div>
+
+        <p id="notification"></p>
+
+        <hr id="top-hr" />
+
+        <div id="actions">
+          <button id="my-weather" onclick="getDefaultWeather()">
+            Get my weather forecast
+            <i class="fa-solid fa-location-dot"></i>
+          </button>
+
+          <form id="weather-form">
+            <input type="text" placeholder="Enter City" id="city" />
+            <i
+              id="openSearchBtn"
+              class="fa fa-magnifying-glass"
+              aria-hidden="true"
+            ></i>
+            <i
+              id="closeSearchBtn"
+              class="fa-solid fa-xmark"
+              onclick="toggleSearchInput()"
+            ></i>
+          </form>
+        </div>
       </div>
-      
-      <div class="wrapper">
+
+      <div id="weather">
         <div id="temp"></div>
-        <div id="weather-info"></div>
-      </div>
-    </div>
-    
-    <div class="weather">
-      <img alt="weather icon" id="weather-icon">
-      <div id="hourly-forecast"></div>
-      <p id="errorMessage"></p>
-    </div>
 
-  </main>
-  <script src="script.js"></script>
-</body>
+        <div class="weather-details">
+          <img alt="weather icon" id="weather-icon" />
+          <div id="weather-info"></div>
+        </div>
+      </div>
+
+      <div id="hourly-forcast-section">
+        <i
+          class="fa-solid fa-angle-up"
+          onclick="toggleHourlyForecast()"
+          title="see hourly forecast"
+        ></i>
+        <div id="city-name"></div>
+        <h3>hourly forecast</h3>
+        <div id="hourly-forecast"></div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
 </html>

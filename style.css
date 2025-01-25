@@ -1,95 +1,87 @@
 * {
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
 }
 
-html, body {
-    background: linear-gradient(#752e2e, #582323) ;
-    background-image: url(img/pexels-cmonphotography-1809644.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
-    color: #ddd;
-    width: 100%;
-    height: 100vh;
-    overflow-y: hidden;
+html,
+body {
+  position: relative;
+  background: linear-gradient(#752e2e, #582323);
+  background-image: url(img/pexels-cmonphotography-1809644.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  color: #ddd;
+  width: 100%;
+  height: 100vh;
+  overflow-y: hidden;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-div.notification-box {
-    background-color: #222;
-    position: fixed;
-    inset: 0;
-    box-shadow: 0px 4px 10px #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+div#box {
+  width: fit-content;
+  max-width: 200px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #aaa;
+  box-shadow: 0 2px 10px #111;
+  position: absolute;
+  bottom: 10px;
+  left: -100%;
+  transition: left 1s ease-in-out, opacity 0.6s ease;
+  border-bottom: 1px #d7b03a solid;
+  opacity: 0;
+  border-radius: 2px;
+  z-index: 100;
 }
 
-div.notification-box .box {
-    width: fit-content;
-    max-width: 275px;
-    height: auto;
-    padding: 20px;
-    background-color: #ddd;
-    border-radius: 10px;
-}
-
-div.notification-box p {
-    color: #222;
-    padding: 10px 0;
-    font-size: 14px;
-}
-
-div.notification-box button {
-    width: 100%;
-    padding: 12px 0;
-    margin: 5px 0;
-    background-color: #006eff;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
+div#box p {
+  padding-bottom: 2px;
+  color: #222;
+  font-size: 12px;
 }
 
 #load-screen {
-    display: none;
-    position: fixed;
-    inset: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: #222222fe;
-    z-index: 90;
+  display: none;
+  position: fixed;
+  inset: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: #222222fe;
+  z-index: 90;
 }
 
 #loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #fff;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    position: relative;
-    animation: pulse 1s linear infinite;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  position: relative;
+  animation: pulse 1s linear infinite;
 }
 
 #loader:after {
-    content: '';
+  content: "";
   position: absolute;
   width: 48px;
   height: 48px;
-  border: 5px solid #FFF;
+  border: 5px solid #fff;
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
@@ -100,135 +92,199 @@ div.notification-box button {
 }
 
 @keyframes scaleUp {
-    0% { transform: translate(-50%, -50%) scale(0) }
-    60% , 100% { transform: translate(-50%, -50%)  scale(1)}
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  60%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 @keyframes pulse {
-    0% , 60% , 100%{ transform:  scale(1) }
-    80% { transform:  scale(1.2)}
+  0%,
+  60%,
+  100% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.2);
+  }
 }
 
 main {
-    position: relative;
-    margin: 0 auto;
-    padding: 60px 30px;
-    width: 100%;
-    max-width: 800px;
-    overflow: auto;
+  position: relative;
+  margin: 0 auto;
+  padding: 40px;
+  width: 800px;
+  max-height: 90vh;
+  background-color: #dddddd0f;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 3px 10px #222;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
 }
 
-.top {
-    display: flex;
-    justify-content: space-between;
+.home {
+  margin: 30px 0;
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10%;
 }
 
-.top #city-name {
-    margin-bottom: 10px;
+.home #city-name-date {
+  display: none;
+  width: 100%;
 }
 
-.top #current-city-date {
-    margin-bottom: 25px;
+.home #city-name {
+  margin-bottom: 10px;
 }
 
-.top .wrapper {
-    font-style: italic;
-    text-align: center;
+.home p#notification {
+  width: 50%;
+  text-align: left;
 }
 
-.top #temp {
-    padding-right: 30px;
-    font-size: 200px;
-    font-weight: 300;
+.home hr {
+  margin: auto 0;
+  width: 2px;
+  height: 20px;
+  background-color: #aaa;
 }
 
-.top #weather-info {
-    text-transform: capitalize;
-    font-size: 18px;
+button#my-weather {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #1f7ae2;
+  color: #ddd;
+  text-align: center;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+button#my-weather:hover {
+  background-color: #2283f1;
+}
+
+button#my-weather i {
+  color: #fff;
+}
+
+.home #actions {
+  width: 50%;
 }
 
 #weather-form {
-    width: fit-content;
-    height: 35px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 50%;
-    box-shadow: 0 2px 10px #222;
-    overflow: hidden;
-    transition: .2s ease-in;
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: 0.2s ease-in;
 }
 
-#city {
-    visibility: hidden;
-    width: 0;
-    height: 0;
-    padding: 0;
-    color: #222;
-    transition: .2s ease-in;
+input#city {
+  width: 100%;
+  height: 40px;
+  padding: 0 10px;
+  color: #222;
+  transition: 0.2s ease-in;
 }
 
 i {
-    margin: 10px;
-    color: #222;
-    text-align: center;
+  margin: 10px;
+  color: #222;
+  text-align: center;
 }
 
 i.fa-xmark {
-    display: none;
-    color: rgb(255, 72, 72);
+  display: none;
+  color: rgb(255, 72, 72);
 }
 
-.weather {
-    margin: 50px 0 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 15px;
-    background-color: #ffffff1f;
-    border-radius: 10px;
-    overflow: hidden;
-    font-size: 14px;
+#weather {
+  width: 100%;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.weather #weather-icon {
-    display: none;
-    width: 20%;
+#weather #temp .temperature {
+  font-size: 150px;
 }
 
-.weather #hourly-forecast {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#weather-icon {
+  width: 150px;
+  height: auto;
 }
 
-.weather .hourly-item {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+#weather-info {
+  text-align: center;
+  font-style: italic;
+  text-transform: capitalize;
 }
 
-hr {
-    width: 0.5px;
-    height: 50px;
-    border: none;
-    background-color: #aaaaaacf;
+#hourly-forcast-section {
+  border-radius: 10px;
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -225px;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  transition: 0.4s ease-in-out;
+  z-index: 50;
 }
 
-hr:last-child {
-    display: none;
+#hourly-forcast-section i {
+  margin: 15px auto 0;
+  font-size: 18px;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-#errorMessage {
-    display: none;
-    font-size: 18px;
-    color: #f00;
-    font-weight: 600;
-    padding: 10px;  
+#hourly-forcast-section h3 {
+  padding: 25px 20px;
+  text-transform: capitalize;
+  font-size: 25px;
+  color: #111;
+}
+
+#hourly-forecast {
+  padding: 20px;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  background-color: #333;
+}
+
+.hourly-item {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+  display: inherit;
+  flex-direction: column;
+  justify-content: inherit;
+  align-items: inherit;
+}
+
+.hourly-item p {
+  font-size: 14px;
 }
