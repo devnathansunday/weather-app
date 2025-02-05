@@ -17,7 +17,7 @@ const closeSearchBtn = $("closeSearchBtn");
 const loader = $("load-screen");
 const errorMessage = $("errorMessage");
 const cityDetails = $("city-name-date");
-const hourlyForecastSection = $("hourly-forcast-section");
+const hourlyForecastSection = $("hourly-forecast-section");
 const mainContainer = document.querySelector("main");
 const angleUp = document.querySelector(".fa-angle-up");
 const notification = $("notification");
@@ -46,7 +46,7 @@ function toggleHourlyForecast() {
 }
 
 document.addEventListener("click", function (event) {
-  if (!event.target.closest("#hourly-forcast-section")) {
+  if (!event.target.closest("#hourly-forecast-section")) {
     hourlyForecastSection.style.backgroundColor = "";
     hourlyForecastSection.style.bottom = "-225px";
     angleUp.style.transform = "rotate(0deg)";
@@ -133,7 +133,7 @@ async function getWeather(lat, lon) {
     } else {
       displayErrorMsg();
       oops.style.display = "block";
-      notification.textContent = `An error occurred (${error.message})`;
+      notification.textContent = "Network error";
     }
   } finally {
     setTimeout(() => {
@@ -165,7 +165,7 @@ function getDefaultWeather() {
       cityDetails.style.display = "";
       mainContainer.style.gap = "0";
       oops.style.display = "block";
-      notification.style.display = "block";
+      notification.style.display = "inline-block";
       hr.style.display = "block";
 
       setTimeout(() => {
