@@ -40,7 +40,7 @@ function toggleHourlyForecast() {
 
   if (
     styles.bottom === "-225px" ||
-    styles.bottom === "-460px" ||
+    styles.bottom === "-450px" ||
     styles.bottom === "-340px"
   ) {
     hourlyForecastSection.style.bottom = "0";
@@ -49,7 +49,7 @@ function toggleHourlyForecast() {
   } else {
     if (MediaQuery375.matches) {
       hourlyForecastSection.style.backgroundColor = "";
-      hourlyForecastSection.style.bottom = "-460px";
+      hourlyForecastSection.style.bottom = "-450px";
       angleUp.style.transform = "rotate(0deg)";
     } else if (MediaQuery425.matches) {
       hourlyForecastSection.style.backgroundColor = "";
