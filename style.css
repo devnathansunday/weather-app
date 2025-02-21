@@ -271,6 +271,7 @@ i.fa-xmark {
 
 @media (max-width: 426px) {
   main {
+    height: 95vh;
     max-width: 93vw;
     max-height: 95vh;
     justify-content: space-evenly;
