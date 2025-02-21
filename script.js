@@ -34,22 +34,50 @@ function clearFields() {
 }
 
 function toggleHourlyForecast() {
-  if (window.getComputedStyle(hourlyForecastSection).bottom === "-225px") {
+  const styles = getComputedStyle(hourlyForecastSection);
+  const MediaQuery375 = window.matchMedia("(max-width: 376px)");
+  const MediaQuery425 = window.matchMedia("(max-width: 426px)");
+
+  if (
+    styles.bottom === "-225px" ||
+    styles.bottom === "-460px" ||
+    styles.bottom === "-340px"
+  ) {
     hourlyForecastSection.style.bottom = "0";
     hourlyForecastSection.style.backgroundColor = "#ddd";
     angleUp.style.transform = "rotate(180deg)";
   } else {
-    hourlyForecastSection.style.backgroundColor = "";
-    hourlyForecastSection.style.bottom = "-225px";
-    angleUp.style.transform = "rotate(0deg)";
+    if (MediaQuery375.matches) {
+      hourlyForecastSection.style.backgroundColor = "";
+      hourlyForecastSection.style.bottom = "-460px";
+      angleUp.style.transform = "rotate(0deg)";
+    } else if (MediaQuery425.matches) {
+      hourlyForecastSection.style.backgroundColor = "";
+      hourlyForecastSection.style.bottom = "-340px";
+      angleUp.style.transform = "rotate(0deg)";
+    } else {
+      hourlyForecastSection.style.backgroundColor = "";
+      hourlyForecastSection.style.bottom = "-225px";
+      angleUp.style.transform = "rotate(0deg)";
+    }
   }
 }
 
 document.addEventListener("click", function (event) {
   if (!event.target.closest("#hourly-forecast-section")) {
-    hourlyForecastSection.style.backgroundColor = "";
-    hourlyForecastSection.style.bottom = "-225px";
-    angleUp.style.transform = "rotate(0deg)";
+    if (MediaQuery375.matches) {
+      hourlyForecastSection.style.bottom = "-460px";
+      angleUp.style.transform = "rotate(0deg)";
+      hourlyForecastSection.style.backgroundColor = "";
+    } else if (MediaQuery425.matches) {
+      hourlyForecastSection.style.bottom = "-340px";
+      angleUp.style.transform = "rotate(0deg)";
+      hourlyForecastSection.style.backgroundColor = "";
+    } else {
+      hourlyForecastSection.style.bottom = "-225px";
+      angleUp.style.transform = "rotate(0deg)";
+      hourlyForecastSection.style.backgroundColor = "";
+    }
   }
 });
 
@@ -106,7 +134,7 @@ async function getWeather(lat, lon) {
     displaHourlyForecast(forecastData.list);
     cityDetails.style.display = "block";
     weather.style.display = "flex";
-    mainContainer.style.gap = "60px";
+    mainContainer.style.justifyContent = "space-between";
     mainContainer.style.paddingBottom = "100px";
     oops.style.display = "none";
     notification.style.display = "none";
