@@ -92,6 +92,7 @@ main {
   padding: 40px;
   width: 800px;
   max-height: 90vh;
+  max-height: 90svh;
   background-color: #dddddd0f;
   backdrop-filter: blur(15px);
   box-shadow: 0 3px 10px #222;
@@ -273,6 +274,7 @@ i.fa-xmark {
   main {
     max-width: 93vw;
     max-height: 93vh;
+    max-height: 93svh;
     justify-content: space-evenly;
   }
   .home {
