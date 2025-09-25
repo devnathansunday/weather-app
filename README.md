@@ -15,7 +15,7 @@ A clean, responsive weather application that shows current conditions and hourly
 
 ## 🚀 Usage
 
-1. [**Visit app**](https://ns-weather-app.vercel.app/) (Allow location access when prompted)
+1. [**VISIT APP**](https://ns-weather-app.vercel.app/) (Allow location access when prompted)
 2. **Get My Weather**: Click the location button to automatically fetch weather for your current location
 3. **Search by City**: Type a city name in the search bar and press Enter  
 4. **View Hourly Forecast**: Click the arrow at the bottom to expand/collapse the 24-hour forecast
